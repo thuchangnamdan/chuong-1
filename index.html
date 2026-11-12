@@ -932,7 +932,7 @@
     <p style="margin:0 0 10px; font-size:13px; color:#475569;">Thông tin hiển thị ở trang đầu và đường link Google Apps Script (/exec) nhận/tải điểm:</p>
     <input type="text" id="cfg-teacher" class="input-field" value="Trần Thị Thu Chẳng" placeholder="Tên giáo viên" />
     <input type="text" id="cfg-school" class="input-field" value="Trường THCS Nam Đàn" placeholder="Tên trường" />
-    <input type="text" id="cfg-script" class="input-field" value="https://script.google.com/macros/s/AKfycby_8k2ZQB4GcG7qdanf8OuCKHH_tN9i4iXo6DH4KvlQQ9R5uXku0fw3itsvauc15-Yx/exec" placeholder="Link Google Apps Script /exec" />
+    <input type="text" id="cfg-script" class="input-field" value="https://script.google.com/macros/s/AKfycbw0oMivE_Frrr-jfdi2MusJNz1LVADuIHFNsR0dKXm6hGU9ca-U9KCYllzPxFUmrBi6/exec" placeholder="Link Google Apps Script /exec" />
     <button class="btn btn-gold" onclick="saveTeacherConfig()">Lưu cấu hình</button>
     <button class="btn" style="margin-top:8px;" onclick="closeModals()">Đóng</button>
   </div>
@@ -942,7 +942,7 @@
 // =========================================================================
 // 1. CẤU HÌNH MẶC ĐỊNH & ÂM THANH
 // =========================================================================
-const DEFAULT_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby_8k2ZQB4GcG7qdanf8OuCKHH_tN9i4iXo6DH4KvlQQ9R5uXku0fw3itsvauc15-Yx/exec";
+const DEFAULT_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw0oMivE_Frrr-jfdi2MusJNz1LVADuIHFNsR0dKXm6hGU9ca-U9KCYllzPxFUmrBi6/exec";
 
 let teacherConfig = JSON.parse(localStorage.getItem('vqht_teacher_cfg')) || {
   teacherName: "Trần Thị Thu Chẳng",
