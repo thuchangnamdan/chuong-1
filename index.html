@@ -16,6 +16,8 @@
       --cream: #fffdf7;
       --green: #22c55e;
       --green-bg: #dcfce7;
+      --teal: #0f5c52;
+      --teal-light: #e6f2f0;
       --red: #ef4444;
       --red-bg: #fee2e2;
       --card-shadow: 0 5px 0 var(--navy);
@@ -47,6 +49,12 @@
       flex-direction: column;
       overflow-x: hidden;
       box-shadow: 0 0 30px rgba(0,0,0,0.4);
+      transition: max-width 0.25s ease;
+    }
+
+    #app.wide-mode {
+      max-width: 960px;
+      background: #f8fafc;
     }
 
     /* Clouds decoration */
@@ -102,12 +110,9 @@
       transform: translateY(4px);
       box-shadow: 0 1px 0 var(--navy);
     }
-    .btn-gold {
-      background: var(--gold);
-    }
-    .btn-green {
-      background: #4ade80;
-    }
+    .btn-gold { background: var(--gold); }
+    .btn-green { background: #4ade80; }
+    .btn-teal { background: var(--teal); color: #ffffff; }
     .btn-sm {
       padding: 9px 14px;
       font-size: 15px;
@@ -125,11 +130,7 @@
       padding-bottom: 24px;
       gap: 14px;
     }
-    .q-logo {
-      width: 84px;
-      height: 84px;
-      margin: 0 auto;
-    }
+    .q-logo { width: 84px; height: 84px; margin: 0 auto; }
     .game-title {
       font-size: 38px;
       font-weight: 900;
@@ -140,16 +141,8 @@
       text-shadow: 0 4px 0 var(--navy);
       letter-spacing: 0.5px;
     }
-    .game-title span {
-      display: block;
-      color: #ffffff;
-    }
-    .subtitle {
-      font-size: 16px;
-      font-weight: 800;
-      color: var(--navy);
-      margin-bottom: 4px;
-    }
+    .game-title span { display: block; color: #ffffff; }
+    .subtitle { font-size: 16px; font-weight: 800; color: var(--navy); margin-bottom: 4px; }
     .teacher-card {
       background: var(--cream);
       border: 3px solid var(--navy);
@@ -201,247 +194,95 @@
       top: 0;
       z-index: 20;
     }
-    .hud-left {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex: 1;
-      min-width: 0;
-    }
+    .hud-left { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0; }
     .avatar-circle {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: #fde68a;
-      border: 3px solid var(--navy);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      flex-shrink: 0;
+      width: 44px; height: 44px; border-radius: 50%; background: #fde68a;
+      border: 3px solid var(--navy); display: flex; align-items: center;
+      justify-content: center; font-size: 24px; flex-shrink: 0;
     }
-    .hud-info {
-      flex: 1;
-      min-width: 0;
-    }
-    .hud-name-row {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 15px;
-      font-weight: 900;
-    }
-    .hud-lvl {
-      color: #6366f1;
-      font-size: 13px;
-    }
+    .hud-info { flex: 1; min-width: 0; }
+    .hud-name-row { display: flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 900; }
+    .hud-lvl { color: #6366f1; font-size: 13px; }
     .xp-bar {
-      width: 100%;
-      height: 10px;
-      background: #e2e8f0;
-      border: 2px solid var(--navy);
-      border-radius: 99px;
-      overflow: hidden;
-      margin-top: 3px;
+      width: 100%; height: 10px; background: #e2e8f0;
+      border: 2px solid var(--navy); border-radius: 99px; overflow: hidden; margin-top: 3px;
     }
-    .xp-fill {
-      height: 100%;
-      background: #8b5cf6;
-      width: 0%;
-      transition: width 0.3s ease;
-    }
-    .xp-text {
-      font-size: 11px;
-      font-weight: 800;
-      color: #475569;
-    }
+    .xp-fill { height: 100%; background: #8b5cf6; width: 0%; transition: width 0.3s ease; }
+    .xp-text { font-size: 11px; font-weight: 800; color: #475569; }
     .coin-pill {
-      background: #fffbeb;
-      border: 2.5px solid var(--navy);
-      border-radius: 99px;
-      padding: 5px 10px;
-      font-weight: 900;
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      flex-shrink: 0;
+      background: #fffbeb; border: 2.5px solid var(--navy); border-radius: 99px;
+      padding: 5px 10px; font-weight: 900; font-size: 14px;
+      display: flex; align-items: center; gap: 4px; flex-shrink: 0;
     }
     .icon-btn {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      border: 2.5px solid var(--navy);
-      background: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 17px;
-      cursor: pointer;
-      flex-shrink: 0;
+      width: 38px; height: 38px; border-radius: 50%; border: 2.5px solid var(--navy);
+      background: #ffffff; display: flex; align-items: center; justify-content: center;
+      font-size: 17px; cursor: pointer; flex-shrink: 0;
     }
 
     /* Map Screen */
     .map-container {
-      flex: 1;
-      padding: 20px 16px 90px;
-      display: flex;
-      flex-direction: column-reverse;
-      align-items: center;
-      gap: 28px;
-      position: relative;
+      flex: 1; padding: 20px 16px 90px; display: flex;
+      flex-direction: column-reverse; align-items: center; gap: 28px; position: relative;
     }
     .land-node {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      z-index: 2;
-      width: 210px;
+      display: flex; flex-direction: column; align-items: center;
+      position: relative; z-index: 2; width: 210px;
     }
     .land-node:nth-child(odd) { align-self: flex-start; margin-left: 16px; }
     .land-node:nth-child(even) { align-self: flex-end; margin-right: 16px; }
     .land-circle {
-      width: 82px;
-      height: 82px;
-      border-radius: 50%;
-      border: 4px solid var(--navy);
-      background: #dcfce7;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 40px;
-      box-shadow: 0 5px 0 var(--navy);
-      cursor: pointer;
-      position: relative;
-      transition: transform 0.1s;
+      width: 82px; height: 82px; border-radius: 50%; border: 4px solid var(--navy);
+      background: #dcfce7; display: flex; align-items: center; justify-content: center;
+      font-size: 40px; box-shadow: 0 5px 0 var(--navy); cursor: pointer;
+      position: relative; transition: transform 0.1s;
     }
-    .land-circle:active {
-      transform: translateY(3px);
-      box-shadow: 0 2px 0 var(--navy);
-    }
-    .land-circle.locked {
-      background: #cbd5e1;
-      cursor: not-allowed;
-      opacity: 0.85;
-    }
+    .land-circle:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--navy); }
+    .land-circle.locked { background: #cbd5e1; cursor: not-allowed; opacity: 0.85; }
     .land-badge-char {
-      position: absolute;
-      top: -16px;
-      right: -14px;
-      font-size: 28px;
-      background: #fff;
-      border: 2px solid var(--navy);
-      border-radius: 50%;
-      width: 38px;
-      height: 38px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      animation: bounce 1.4s infinite;
+      position: absolute; top: -16px; right: -14px; font-size: 28px; background: #fff;
+      border: 2px solid var(--navy); border-radius: 50%; width: 38px; height: 38px;
+      display: flex; align-items: center; justify-content: center; animation: bounce 1.4s infinite;
     }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-    }
+    @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
     .land-label {
-      margin-top: 8px;
-      background: #ffffff;
-      border: 2.5px solid var(--navy);
-      border-radius: 14px;
-      padding: 6px 12px;
-      font-weight: 900;
-      font-size: 15px;
-      text-align: center;
-      box-shadow: 0 3px 0 var(--navy);
+      margin-top: 8px; background: #ffffff; border: 2.5px solid var(--navy);
+      border-radius: 14px; padding: 6px 12px; font-weight: 900; font-size: 15px;
+      text-align: center; box-shadow: 0 3px 0 var(--navy);
     }
-    .land-status {
-      margin-top: 4px;
-      font-size: 13px;
-      font-weight: 800;
-      color: #d97706;
-    }
-    .land-status.locked-txt {
-      color: #64748b;
-    }
+    .land-status { margin-top: 4px; font-size: 13px; font-weight: 800; color: #d97706; }
+    .land-status.locked-txt { color: #64748b; }
 
     /* Bottom Nav */
     .bottom-nav {
-      position: sticky;
-      bottom: 0;
-      background: #ffffff;
-      border-top: 3px solid var(--navy);
-      display: flex;
-      justify-content: space-around;
-      padding: 8px 4px;
-      z-index: 20;
+      position: sticky; bottom: 0; background: #ffffff; border-top: 3px solid var(--navy);
+      display: flex; justify-content: space-around; padding: 8px 4px; z-index: 20;
     }
     .nav-item {
-      background: none;
-      border: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2px;
-      font-size: 12px;
-      font-weight: 800;
-      color: #64748b;
-      cursor: pointer;
-      padding: 4px 8px;
-      border-radius: 12px;
+      background: none; border: none; display: flex; flex-direction: column;
+      align-items: center; gap: 2px; font-size: 12px; font-weight: 800;
+      color: #64748b; cursor: pointer; padding: 4px 8px; border-radius: 12px;
     }
-    .nav-item.active {
-      background: #fef3c7;
-      color: var(--navy);
-    }
-    .nav-item span.ico {
-      font-size: 22px;
-    }
+    .nav-item.active { background: #fef3c7; color: var(--navy); }
+    .nav-item span.ico { font-size: 22px; }
 
     /* Modal */
     .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.65);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-      z-index: 100;
+      position: fixed; inset: 0; background: rgba(15, 23, 42, 0.65);
+      display: none; align-items: center; justify-content: center; padding: 16px; z-index: 100;
     }
-    .modal-backdrop.open {
-      display: flex;
-    }
+    .modal-backdrop.open { display: flex; }
     .modal-box {
-      background: var(--cream);
-      border: 3.5px solid var(--navy);
-      border-radius: 24px;
-      padding: 20px;
-      width: 100%;
-      max-width: 420px;
-      box-shadow: 0 8px 0 var(--navy);
-      text-align: center;
-      max-height: 90vh;
-      overflow-y: auto;
+      background: var(--cream); border: 3.5px solid var(--navy); border-radius: 24px;
+      padding: 20px; width: 100%; max-width: 420px; box-shadow: 0 8px 0 var(--navy);
+      text-align: center; max-height: 90vh; overflow-y: auto;
     }
-    .diff-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin: 16px 0;
-    }
+    .diff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 16px 0; }
     .diff-card {
-      border: 3px solid var(--navy);
-      border-radius: 16px;
-      padding: 12px 6px;
-      cursor: pointer;
-      box-shadow: 0 4px 0 var(--navy);
-      transition: transform 0.08s;
+      border: 3px solid var(--navy); border-radius: 16px; padding: 12px 6px;
+      cursor: pointer; box-shadow: 0 4px 0 var(--navy); transition: transform 0.08s;
     }
-    .diff-card:active {
-      transform: translateY(3px);
-      box-shadow: 0 1px 0 var(--navy);
-    }
+    .diff-card:active { transform: translateY(3px); box-shadow: 0 1px 0 var(--navy); }
     .diff-easy { background: #dcfce7; }
     .diff-med { background: #fef08a; }
     .diff-hard { background: #fecdd3; }
@@ -450,350 +291,239 @@
 
     /* Quiz Screen */
     .quiz-subbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 8px 14px;
-      background: rgba(255,255,255,0.75);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 8px 14px; background: rgba(255,255,255,0.75);
       border-bottom: 2px solid rgba(35,31,66,0.15);
     }
-    .hearts {
-      font-size: 18px;
-      letter-spacing: 2px;
-    }
-    .progress-segments {
-      display: flex;
-      gap: 5px;
-      padding: 10px 16px 4px;
-    }
-    .seg {
-      flex: 1;
-      height: 8px;
-      border-radius: 99px;
-      background: #ffffff;
-      border: 2px solid var(--navy);
-    }
+    .hearts { font-size: 18px; letter-spacing: 2px; }
+    .progress-segments { display: flex; gap: 5px; padding: 10px 16px 4px; }
+    .seg { flex: 1; height: 8px; border-radius: 99px; background: #ffffff; border: 2px solid var(--navy); }
     .seg.done { background: #22c55e; }
     .seg.current { background: var(--gold); }
     .seg.wrong { background: #ef4444; }
 
     .question-card {
-      background: var(--cream);
-      border: 3.5px solid var(--navy);
-      border-radius: 22px;
-      padding: 16px;
-      margin: 10px 14px;
-      box-shadow: var(--card-shadow);
+      background: var(--cream); border: 3.5px solid var(--navy); border-radius: 22px;
+      padding: 16px; margin: 10px 14px; box-shadow: var(--card-shadow);
     }
-    .q-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    .q-type {
-      font-size: 12px;
-      font-weight: 900;
-      color: #64748b;
-      letter-spacing: 0.5px;
-    }
+    .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .q-type { font-size: 12px; font-weight: 900; color: #64748b; letter-spacing: 0.5px; }
     .q-badge {
-      font-size: 12px;
-      font-weight: 900;
-      padding: 3px 10px;
-      border-radius: 99px;
-      border: 2px solid var(--navy);
-      background: #fef08a;
+      font-size: 12px; font-weight: 900; padding: 3px 10px;
+      border-radius: 99px; border: 2px solid var(--navy); background: #fef08a;
     }
-    .q-text {
-      font-size: 20px;
-      font-weight: 800;
-      line-height: 1.5;
-      margin-bottom: 14px;
-    }
+    .q-text { font-size: 20px; font-weight: 800; line-height: 1.5; margin-bottom: 14px; }
 
     /* Fraction formatting */
     .frac {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      vertical-align: middle;
-      margin: 0 3px;
-      font-size: 0.88em;
-      line-height: 1.05;
+      display: inline-flex; flex-direction: column; align-items: center;
+      vertical-align: middle; margin: 0 3px; font-size: 0.88em; line-height: 1.05;
     }
-    .frac > span:first-child {
-      border-bottom: 2px solid currentColor;
-      padding: 0 3px 1px;
-    }
-    .frac > span:last-child {
-      padding: 1px 3px 0;
-    }
+    .frac > span:first-child { border-bottom: 2px solid currentColor; padding: 0 3px 1px; }
+    .frac > span:last-child { padding: 1px 3px 0; }
 
     /* Options */
-    .options-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .options-list { display: flex; flex-direction: column; gap: 10px; }
     .opt-btn {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: #ffffff;
-      border: 3px solid var(--navy);
-      border-radius: 16px;
-      padding: 11px 14px;
-      font-size: 18px;
-      font-weight: 800;
-      cursor: pointer;
-      text-align: left;
-      box-shadow: 0 3px 0 var(--navy);
-      transition: all 0.1s;
+      display: flex; align-items: center; gap: 12px; background: #ffffff;
+      border: 3px solid var(--navy); border-radius: 16px; padding: 11px 14px;
+      font-size: 18px; font-weight: 800; cursor: pointer; text-align: left;
+      box-shadow: 0 3px 0 var(--navy); transition: all 0.1s;
     }
-    .opt-btn.selected {
-      background: #fef3c7;
-      border-color: #d97706;
-      transform: translateY(-1px);
-    }
-    .opt-btn.correct {
-      background: var(--green-bg);
-      border-color: var(--green);
-    }
-    .opt-btn.incorrect {
-      background: var(--red-bg);
-      border-color: var(--red);
-    }
-    .opt-btn.eliminated {
-      opacity: 0.35;
-      pointer-events: none;
-    }
+    .opt-btn.selected { background: #fef3c7; border-color: #d97706; transform: translateY(-1px); }
+    .opt-btn.correct { background: var(--green-bg); border-color: var(--green); }
+    .opt-btn.incorrect { background: var(--red-bg); border-color: var(--red); }
+    .opt-btn.eliminated { opacity: 0.35; pointer-events: none; }
     .opt-letter {
-      width: 32px;
-      height: 32px;
-      border-radius: 10px;
-      background: var(--gold);
-      border: 2px solid var(--navy);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      font-size: 16px;
-      flex-shrink: 0;
+      width: 32px; height: 32px; border-radius: 10px; background: var(--gold);
+      border: 2px solid var(--navy); display: flex; align-items: center;
+      justify-content: center; font-weight: 900; font-size: 16px; flex-shrink: 0;
     }
 
     /* Fill-in Input */
     .fill-display {
-      width: 100%;
-      min-height: 54px;
-      background: #ffffff;
-      border: 3px solid #3b82f6;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      font-weight: 900;
-      padding: 8px;
-      margin-bottom: 6px;
+      width: 100%; min-height: 54px; background: #ffffff; border: 3px solid #3b82f6;
+      border-radius: 14px; display: flex; align-items: center; justify-content: center;
+      font-size: 24px; font-weight: 900; padding: 8px; margin-bottom: 6px;
     }
     .fill-preview {
-      text-align: center;
-      font-size: 16px;
-      font-weight: 800;
-      color: #475569;
-      margin-bottom: 10px;
-      min-height: 28px;
+      text-align: center; font-size: 16px; font-weight: 800;
+      color: #475569; margin-bottom: 10px; min-height: 28px;
     }
-    .keypad {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 6px;
-      margin-bottom: 12px;
-    }
+    .keypad { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-bottom: 12px; }
     .key-btn {
-      background: #ffffff;
-      border: 2.5px solid var(--navy);
-      border-radius: 12px;
-      padding: 10px 4px;
-      font-size: 18px;
-      font-weight: 900;
-      box-shadow: 0 3px 0 var(--navy);
-      cursor: pointer;
+      background: #ffffff; border: 2.5px solid var(--navy); border-radius: 12px;
+      padding: 10px 4px; font-size: 18px; font-weight: 900;
+      box-shadow: 0 3px 0 var(--navy); cursor: pointer;
     }
-    .key-btn:active {
-      transform: translateY(2px);
-      box-shadow: 0 1px 0 var(--navy);
-    }
+    .key-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--navy); }
 
     /* Power-ups bar */
-    .powerups-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      margin: 4px 14px 12px;
-    }
+    .powerups-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 4px 14px 12px; }
     .pu-btn {
-      background: #ffffff;
-      border: 2.5px solid var(--navy);
-      border-radius: 14px;
-      padding: 8px 4px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2px;
-      font-size: 12px;
-      font-weight: 800;
-      box-shadow: 0 3px 0 var(--navy);
-      cursor: pointer;
+      background: #ffffff; border: 2.5px solid var(--navy); border-radius: 14px;
+      padding: 8px 4px; display: flex; flex-direction: column; align-items: center;
+      gap: 2px; font-size: 12px; font-weight: 800; box-shadow: 0 3px 0 var(--navy); cursor: pointer;
     }
-    .pu-btn:disabled {
-      opacity: 0.45;
-      cursor: not-allowed;
-    }
+    .pu-btn:disabled { opacity: 0.45; cursor: not-allowed; }
     .pu-ico { font-size: 20px; }
     .pu-sub { font-size: 11px; color: #4f46e5; }
 
     /* Hint Box (3 levels) */
     .hint-box {
-      margin: 0 14px 12px;
-      background: #eff6ff;
-      border: 3px solid #2563eb;
-      border-radius: 16px;
-      padding: 12px 14px;
-      font-size: 15px;
-      font-weight: 700;
-      display: none;
+      margin: 0 14px 12px; background: #eff6ff; border: 3px solid #2563eb;
+      border-radius: 16px; padding: 12px 14px; font-size: 15px; font-weight: 700; display: none;
     }
     .hint-box.show { display: block; }
-    .hint-step {
-      padding: 6px 0;
-      border-bottom: 1px dashed #93c5fd;
-    }
+    .hint-step { padding: 6px 0; border-bottom: 1px dashed #93c5fd; }
     .hint-step:last-child { border-bottom: none; }
 
     /* Explanation Panel */
     .result-panel {
-      margin: 0 14px 20px;
-      border: 3.5px solid var(--navy);
-      border-radius: 20px;
-      padding: 16px;
-      box-shadow: var(--card-shadow);
-      display: none;
+      margin: 0 14px 20px; border: 3.5px solid var(--navy); border-radius: 20px;
+      padding: 16px; box-shadow: var(--card-shadow); display: none;
     }
     .result-panel.show { display: block; }
     .result-panel.ok { background: #dcfce7; }
     .result-panel.bad { background: #fee2e2; }
-    .res-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 10px;
-    }
-    .res-title {
-      font-size: 22px;
-      font-weight: 900;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .res-rewards {
-      display: flex;
-      gap: 6px;
-    }
+    .res-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .res-title { font-size: 22px; font-weight: 900; display: flex; align-items: center; gap: 8px; }
+    .res-rewards { display: flex; gap: 6px; }
     .rew-pill {
-      background: #ffffff;
-      border: 2px solid var(--navy);
-      border-radius: 99px;
-      padding: 3px 9px;
-      font-size: 13px;
-      font-weight: 900;
+      background: #ffffff; border: 2px solid var(--navy); border-radius: 99px;
+      padding: 3px 9px; font-size: 13px; font-weight: 900;
     }
     .res-card {
-      background: #ffffff;
-      border: 2.5px solid var(--navy);
-      border-radius: 14px;
-      padding: 10px 12px;
-      margin-bottom: 10px;
-      font-size: 16px;
-      font-weight: 700;
-      line-height: 1.5;
+      background: #ffffff; border: 2.5px solid var(--navy); border-radius: 14px;
+      padding: 10px 12px; margin-bottom: 10px; font-size: 16px; font-weight: 700; line-height: 1.5;
     }
     .mistake-card {
-      background: #fffbeb;
-      border: 2.5px solid #d97706;
-      border-radius: 14px;
-      padding: 10px 12px;
-      margin-bottom: 12px;
-      font-size: 15px;
-      font-weight: 700;
-      color: #92400e;
+      background: #fffbeb; border: 2.5px solid #d97706; border-radius: 14px;
+      padding: 10px 12px; margin-bottom: 12px; font-size: 15px; font-weight: 700; color: #92400e;
     }
 
-    /* Sub-tabs content (Shop, Badges, Profile) */
-    .tab-page {
-      padding: 16px 16px 90px;
-      display: none;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .tab-page.active {
-      display: flex;
-    }
+    /* Sub-tabs content */
+    .tab-page { padding: 16px 16px 90px; display: none; flex-direction: column; gap: 12px; }
+    .tab-page.active { display: flex; }
     .card-box {
-      background: var(--cream);
-      border: 3px solid var(--navy);
-      border-radius: 18px;
-      padding: 14px;
-      box-shadow: 0 4px 0 var(--navy);
+      background: var(--cream); border: 3px solid var(--navy); border-radius: 18px;
+      padding: 14px; box-shadow: 0 4px 0 var(--navy);
     }
-    .badge-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
+    .badge-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
     .badge-item {
-      background: #ffffff;
-      border: 2.5px solid var(--navy);
-      border-radius: 16px;
-      padding: 12px;
-      text-align: center;
-      opacity: 0.45;
+      background: #ffffff; border: 2.5px solid var(--navy); border-radius: 16px;
+      padding: 12px; text-align: center; opacity: 0.45;
     }
-    .badge-item.unlocked {
-      opacity: 1;
-      background: #fef9c3;
-    }
+    .badge-item.unlocked { opacity: 1; background: #fef9c3; }
     .input-field {
-      width: 100%;
-      padding: 12px;
-      border: 3px solid var(--navy);
-      border-radius: 14px;
-      font-size: 16px;
-      font-weight: 800;
-      margin: 6px 0 12px;
+      width: 100%; padding: 12px; border: 3px solid var(--navy); border-radius: 14px;
+      font-size: 16px; font-weight: 800; margin: 6px 0 12px;
     }
-    .avatar-picker {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin: 10px 0 16px;
-    }
+    .avatar-picker { display: flex; justify-content: center; gap: 12px; margin: 10px 0 16px; }
     .av-opt {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      border: 3px solid var(--navy);
-      font-size: 30px;
-      background: #fff;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 56px; height: 56px; border-radius: 50%; border: 3px solid var(--navy);
+      font-size: 30px; background: #fff; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
     }
-    .av-opt.selected {
-      background: var(--gold);
-      transform: scale(1.1);
+    .av-opt.selected { background: var(--gold); transform: scale(1.1); }
+
+    /* ==================== TEACHER DASHBOARD (TRANG KẾT QUẢ) ==================== */
+    .td-topbar {
+      background: #ffffff; border-bottom: 2px solid #cbd5e1;
+      padding: 12px 16px; display: flex; flex-wrap: wrap;
+      align-items: center; justify-content: space-between; gap: 10px;
+      position: sticky; top: 0; z-index: 30;
+    }
+    .td-title-group { display: flex; align-items: center; gap: 10px; }
+    .td-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .td-select {
+      padding: 8px 12px; border: 2px solid #0f5c52; border-radius: 12px;
+      font-weight: 800; font-size: 14px; background: #ffffff; color: var(--teal);
+      cursor: pointer;
+    }
+    .td-body { padding: 18px 16px 40px; display: flex; flex-direction: column; gap: 18px; }
+
+    /* KPI Summary Cards (như ảnh 2) */
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+    .kpi-card {
+      background: var(--teal-light); border-top: 4px solid var(--teal);
+      border-radius: 14px; padding: 14px 16px;
+    }
+    .kpi-big { font-size: 28px; font-weight: 900; color: var(--teal); line-height: 1.1; }
+    .kpi-big small { font-size: 16px; font-weight: 800; }
+    .kpi-sub { font-size: 13px; font-weight: 700; color: #334155; margin-top: 6px; }
+
+    /* Class breakdown cards */
+    .class-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+    .class-stat-card {
+      background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 14px;
+      padding: 12px 16px; display: flex; align-items: center; gap: 14px;
+    }
+    .class-badge { font-size: 22px; font-weight: 900; color: var(--teal); min-width: 52px; }
+    .class-bar-wrap { flex: 1; }
+    .class-bar-bg {
+      height: 10px; background: #e2e8f0; border-radius: 99px; overflow: hidden; margin-top: 6px;
+    }
+    .class-bar-fill { height: 100%; background: var(--teal); border-radius: 99px; transition: width 0.4s; }
+
+    /* Section boxes */
+    .td-card {
+      background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 16px;
+      overflow: hidden; box-shadow: 0 2px 6px rgba(15,23,42,0.04);
+    }
+    .td-card-head {
+      padding: 12px 16px; background: #ffffff; border-bottom: 1.5px solid #e2e8f0;
+      display: flex; justify-content: space-between; align-items: center;
+      font-weight: 900; font-size: 16px; color: #0f172a;
+    }
+    .td-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .td-table th {
+      background: var(--teal-light); color: var(--teal); text-align: left;
+      padding: 10px 14px; font-weight: 900; font-size: 12px; letter-spacing: 0.4px;
+    }
+    .td-table td {
+      padding: 11px 14px; border-bottom: 1px solid #e2e8f0; vertical-align: middle; font-weight: 700;
+    }
+    .td-table tr:last-child td { border-bottom: none; }
+
+    /* Student support pills (như ảnh 1) */
+    .pill-student {
+      display: inline-block; background: #fef3c7; color: #92400e;
+      border: 1px solid #fcd34d; border-radius: 8px; padding: 3px 9px;
+      font-size: 13px; font-weight: 800; margin: 2px 4px 2px 0;
+    }
+    .pill-weak {
+      display: inline-block; background: #fee2e2; color: #b91c1c;
+      border-radius: 8px; padding: 3px 8px; font-size: 12px; font-weight: 800;
+    }
+    .pill-good {
+      display: inline-block; background: #dcfce7; color: #15803d;
+      border-radius: 8px; padding: 3px 8px; font-size: 12px; font-weight: 800;
+    }
+
+    /* Bar chart tỉ lệ làm sai (như ảnh 2) */
+    .chart-row { margin-bottom: 14px; }
+    .chart-label { font-size: 14px; font-weight: 800; color: #1e293b; margin-bottom: 5px; }
+    .chart-track {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .chart-bar-bg {
+      flex: 1; height: 16px; background: #f1f5f9; border-radius: 6px; overflow: hidden;
+    }
+    .chart-bar-val {
+      height: 100%; background: #c24136; border-radius: 6px; transition: width 0.5s ease;
+    }
+    .chart-bar-val.teal { background: var(--teal); }
+    .chart-pct { font-size: 14px; font-weight: 900; min-width: 42px; color: #0f172a; }
+
+    /* Sub-tabs inside Teacher Dashboard */
+    .td-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+    .td-tab-btn {
+      padding: 8px 14px; border-radius: 12px; border: 2px solid #cbd5e1;
+      background: #ffffff; font-weight: 800; font-size: 14px; cursor: pointer; color: #475569;
+    }
+    .td-tab-btn.active {
+      background: var(--teal); color: #ffffff; border-color: var(--teal);
     }
   </style>
 </head>
@@ -836,12 +566,11 @@
       <button id="btn-bgm" class="btn btn-sm" onclick="toggleBgm()">🎵 Nhạc nền: tắt</button>
     </div>
 
-    <button class="teacher-link" onclick="openTeacherModal()">Dành cho giáo viên →</button>
+    <button class="teacher-link" onclick="openTeacherDashboard()">Dành cho giáo viên →</button>
   </section>
 
   <!-- ==================== SCREEN 2: MAIN HUB (MAP / SHOP / BADGES / PROFILE) ==================== -->
   <section id="screen-hub" class="screen" style="padding:0;">
-    <!-- HUD -->
     <div class="hud">
       <div class="hud-left">
         <div class="avatar-circle" id="hud-avatar">🐶</div>
@@ -858,12 +587,8 @@
       <button class="icon-btn" id="hud-sound-btn" onclick="toggleSfx()">🔊</button>
     </div>
 
-    <!-- TAB 1: BẢN ĐỒ 5 VÙNG ĐẤT -->
-    <div id="tab-map" class="map-container">
-      <!-- Rendered by JS -->
-    </div>
+    <div id="tab-map" class="map-container"></div>
 
-    <!-- TAB 2: CỬA HÀNG -->
     <div id="tab-shop" class="tab-page">
       <h2 style="margin:0; font-size:22px; font-weight:900;">🛒 Cửa Hàng Hiệp Sĩ</h2>
       <p style="margin:0; font-size:14px; font-weight:700; color:#475569;">Dùng vàng kiếm được qua các ải để trang bị vật phẩm hỗ trợ!</p>
@@ -897,13 +622,11 @@
       </div>
     </div>
 
-    <!-- TAB 3: HUY HIỆU -->
     <div id="tab-badges" class="tab-page">
       <h2 style="margin:0; font-size:22px; font-weight:900;">🏅 Bộ Sưu Tập Huy Hiệu</h2>
       <div class="badge-grid" id="badges-list"></div>
     </div>
 
-    <!-- TAB 4: ÔN TẬP NHANH -->
     <div id="tab-review" class="tab-page">
       <h2 style="margin:0; font-size:22px; font-weight:900;">🕯️ Cẩm Nang Kiến Thức</h2>
       <div class="card-box">
@@ -920,7 +643,6 @@
       </div>
     </div>
 
-    <!-- TAB 5: HỒ SƠ & NỘP BÀI -->
     <div id="tab-profile" class="tab-page">
       <h2 style="margin:0; font-size:22px; font-weight:900;">👤 Hồ Sơ Hiệp Sĩ</h2>
       <div class="card-box">
@@ -929,13 +651,12 @@
         <div style="font-size:15px; font-weight:700; color:#475569;">Số câu trả lời đúng: <b id="prof-correct">0</b> câu</div>
         <hr style="border:1px dashed #cbd5e1; margin:12px 0;">
         <p style="font-size:14px; font-weight:700; margin:0 0 10px;">Khi hoàn thành các vùng đất (hoặc muốn báo cáo tiến độ), hãy bấm nút bên dưới để gửi điểm về cho Thầy/Cô:</p>
-        <button class="btn btn-green" id="btn-submit-sheet" onclick="submitResultsToSheet()">📤 Nộp kết quả cho Giáo viên</button>
+        <button class="btn btn-green" id="btn-submit-sheet" onclick="submitResultsToSheet(false)">📤 Nộp kết quả cho Giáo viên</button>
         <div id="submit-status" style="margin-top:8px; font-size:14px; font-weight:800; text-align:center;"></div>
       </div>
       <button class="btn" onclick="goHome()">🏠 Về màn hình chính</button>
     </div>
 
-    <!-- BOTTOM NAV -->
     <nav class="bottom-nav">
       <button class="nav-item active" onclick="switchTab('map', this)"><span class="ico">🗺️</span>Bản đồ</button>
       <button class="nav-item" onclick="switchTab('shop', this)"><span class="ico">🛒</span>Cửa hàng</button>
@@ -973,7 +694,6 @@
 
     <div class="progress-segments" id="progress-segments"></div>
 
-    <!-- Question Box -->
     <div class="question-card">
       <div class="q-header">
         <span class="q-type" id="q-type-label">TRẮC NGHIỆM</span>
@@ -981,10 +701,8 @@
       </div>
       <div class="q-text" id="q-text">Nội dung câu hỏi</div>
 
-      <!-- Multiple Choice Container -->
       <div id="mc-area" class="options-list"></div>
 
-      <!-- Fill-in Container -->
       <div id="fill-area" style="display:none;">
         <div class="fill-display" id="fill-input-box"></div>
         <div class="fill-preview" id="fill-preview-box">Em viết: </div>
@@ -1011,7 +729,6 @@
       </button>
     </div>
 
-    <!-- 4 Power-ups (Including 3-level Hint) -->
     <div class="powerups-grid">
       <button class="pu-btn" id="pu-hint" onclick="useHint()">
         <span class="pu-ico">📜</span>
@@ -1035,10 +752,8 @@
       </button>
     </div>
 
-    <!-- 3-Level Hint Display -->
     <div id="hint-box" class="hint-box"></div>
 
-    <!-- Step-by-Step Result Panel -->
     <div id="result-panel" class="result-panel">
       <div class="res-header">
         <div class="res-title" id="res-title">✅ Tuyệt vời!</div>
@@ -1050,10 +765,123 @@
       <button class="btn btn-gold" onclick="nextQuestion()">Tiếp tục ▶</button>
     </div>
   </section>
+
+  <!-- ==================== SCREEN 4: TEACHER DASHBOARD (TRANG KẾT QUẢ) ==================== -->
+  <section id="screen-teacher" class="screen" style="padding:0; background:#f8fafc;">
+    <div class="td-topbar">
+      <div class="td-title-group">
+        <button class="icon-btn" style="border-radius:12px;" onclick="exitTeacherDashboard()">←</button>
+        <div>
+          <div style="font-size:18px; font-weight:900; color:#0f172a;">📊 Trang Kết Quả Giáo Viên</div>
+          <div style="font-size:12px; font-weight:700; color:#64748b;" id="td-subtitle">Giáo viên: Trần Thị Thu Chẳng • Trường THCS Nam Đàn</div>
+        </div>
+      </div>
+
+      <div class="td-controls">
+        <select id="td-class-filter" class="td-select" onchange="renderTeacherDashboard()">
+          <option value="ALL">Lớp: Tất cả các lớp</option>
+        </select>
+        <button class="btn btn-teal btn-sm" id="btn-fetch-results" onclick="fetchTeacherResults()">
+          📥 Tải kết quả
+        </button>
+        <button class="btn btn-sm" onclick="openTeacherSettingsModal()">⚙️ Cài đặt</button>
+      </div>
+    </div>
+
+    <div class="td-body">
+      <div id="td-sync-banner" style="font-size:13px; font-weight:800; color:#0f5c52; background:#e6f2f0; padding:8px 14px; border-radius:12px; display:flex; justify-content:space-between; align-items:center;">
+        <span id="td-sync-msg">Đang hiển thị dữ liệu kết quả học sinh...</span>
+        <span id="td-last-update" style="font-size:12px; color:#475569;"></span>
+      </div>
+
+      <!-- KPI Cards (như ảnh 2) -->
+      <div class="kpi-grid" id="td-kpi-grid"></div>
+
+      <!-- Thống kê theo từng lớp (như ảnh 2) -->
+      <div id="td-class-breakdown" class="class-grid"></div>
+
+      <!-- Tabs chuyển đổi 4 góc nhìn phân tích (như ảnh 1 & 2) -->
+      <div class="td-tabs">
+        <button class="td-tab-btn active" onclick="switchTdTab('support', this)">3. Dạng cả lớp sai nhiều nhất</button>
+        <button class="td-tab-btn" onclick="switchTdTab('ranking', this)">1. Bảng xếp hạng</button>
+        <button class="td-tab-btn" onclick="switchTdTab('weakness', this)">2. Dạng yếu nhất của từng người</button>
+        <button class="td-tab-btn" onclick="switchTdTab('chart', this)">📈 Tỉ lệ làm sai theo dạng bài</button>
+      </div>
+
+      <!-- VIEW 3: DẠNG CẢ LỚP SAI NHIỀU NHẤT + TÊN HỌC SINH CẦN HỖ TRỢ (GIỐNG HỆT ẢNH 1) -->
+      <div id="td-view-support" class="td-card">
+        <div class="td-card-head">
+          <span>Trang giáo viên • Dạng bài cần hỗ trợ trước tiết ôn tập</span>
+          <span style="font-size:13px; color:#0f5c52;" id="td-badge-class">Lớp: Tất cả</span>
+        </div>
+        <table class="td-table">
+          <thead>
+            <tr>
+              <th style="width:36%;">DẠNG BÀI</th>
+              <th>CẦN HỖ TRỢ</th>
+            </tr>
+          </thead>
+          <tbody id="td-support-tbody"></tbody>
+        </table>
+      </div>
+
+      <!-- VIEW 1: BẢNG XẾP HẠNG (Tên, cấp độ, số sao của từng người chơi) -->
+      <div id="td-view-ranking" class="td-card" style="display:none;">
+        <div class="td-card-head">
+          <span>🏆 Bảng xếp hạng hiệp sĩ</span>
+          <span style="font-size:13px; color:#64748b;" id="td-rank-count">0 học sinh</span>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="td-table">
+            <thead>
+              <tr>
+                <th>HẠNG</th>
+                <th>HỌ VÀ TÊN</th>
+                <th>LỚP</th>
+                <th>CẤP ĐỘ</th>
+                <th>SỐ SAO</th>
+                <th>CÂU ĐÚNG</th>
+              </tr>
+            </thead>
+            <tbody id="td-ranking-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- VIEW 2: DẠNG YẾU NHẤT CỦA TỪNG NGƯỜI (Trong các dạng bài Toán 7) -->
+      <div id="td-view-weakness" class="td-card" style="display:none;">
+        <div class="td-card-head">
+          <span>🎯 Dạng yếu nhất của từng học sinh</span>
+          <span style="font-size:13px; color:#64748b;">Phân tích chi tiết 14 dạng bài Toán 7</span>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="td-table">
+            <thead>
+              <tr>
+                <th>HỌC SINH</th>
+                <th>LỚP</th>
+                <th>DẠNG YẾU NHẤT CẦN ÔN</th>
+                <th>TỈ LỆ SAI Ở DẠNG NÀY</th>
+              </tr>
+            </thead>
+            <tbody id="td-weakness-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- VIEW 4: BIỂU ĐỒ TỈ LỆ LÀM SAI THEO DẠNG BÀI (GIỐNG ẢNH 2) -->
+      <div id="td-view-chart" class="td-card" style="display:none;">
+        <div class="td-card-head">
+          <span>📊 Tỉ lệ làm sai theo dạng bài (% câu làm sai)</span>
+          <span style="font-size:13px; color:#c24136;" id="td-chart-class-lbl">Tất cả lớp</span>
+        </div>
+        <div style="padding:16px;" id="td-chart-container"></div>
+      </div>
+    </div>
+  </section>
 </div>
 
 <!-- ==================== MODALS ==================== -->
-<!-- Modal: Tạo nhân vật mới -->
 <div id="modal-newchar" class="modal-backdrop">
   <div class="modal-box">
     <h2 style="margin:0 0 8px; font-weight:900;">Tạo Hiệp Sĩ Mới</h2>
@@ -1065,13 +893,12 @@
       <button type="button" class="av-opt" data-av="🐼" onclick="selectAvatar(this)">🐼</button>
     </div>
     <input type="text" id="inp-student-name" class="input-field" placeholder="Họ và tên học sinh (VD: Nguyễn Văn Minh)" />
-    <input type="text" id="inp-student-class" class="input-field" placeholder="Lớp (VD: 7A1)" />
+    <input type="text" id="inp-student-class" class="input-field" placeholder="Lớp (VD: 7A4)" />
     <button class="btn btn-gold" onclick="createNewCharacter()">Bắt đầu hành trình 🚀</button>
     <button class="btn" style="margin-top:8px;" onclick="closeModals()">Hủy</button>
   </div>
 </div>
 
-<!-- Modal: Chọn mức độ thử thách -->
 <div id="modal-diff" class="modal-backdrop">
   <div class="modal-box">
     <h2 id="modal-land-title" style="margin:0 0 6px; font-size:24px; font-weight:900;">Làng Tập Hợp ℚ</h2>
@@ -1098,11 +925,11 @@
   </div>
 </div>
 
-<!-- Modal: Dành cho giáo viên -->
-<div id="modal-teacher" class="modal-backdrop">
+<!-- Modal: Cài đặt Giáo viên -->
+<div id="modal-teacher-settings" class="modal-backdrop">
   <div class="modal-box">
     <h2 style="margin:0 0 8px; font-weight:900;">⚙️ Cài Đặt Giáo Viên</h2>
-    <p style="margin:0 0 10px; font-size:13px; color:#475569;">Thông tin hiển thị ở trang đầu và đường link Google Apps Script (/exec) nhận điểm:</p>
+    <p style="margin:0 0 10px; font-size:13px; color:#475569;">Thông tin hiển thị ở trang đầu và đường link Google Apps Script (/exec) nhận/tải điểm:</p>
     <input type="text" id="cfg-teacher" class="input-field" value="Trần Thị Thu Chẳng" placeholder="Tên giáo viên" />
     <input type="text" id="cfg-school" class="input-field" value="Trường THCS Nam Đàn" placeholder="Tên trường" />
     <input type="text" id="cfg-script" class="input-field" value="https://script.google.com/macros/s/AKfycby_8k2ZQB4GcG7qdanf8OuCKHH_tN9i4iXo6DH4KvlQQ9R5uXku0fw3itsvauc15-Yx/exec" placeholder="Link Google Apps Script /exec" />
@@ -1113,7 +940,7 @@
 
 <script>
 // =========================================================================
-// 1. CẤU HÌNH MẶC ĐỊNH & ÂM THANH (WEB AUDIO API - KHÔNG CẦN FILE MP3 NGOÀI)
+// 1. CẤU HÌNH MẶC ĐỊNH & ÂM THANH
 // =========================================================================
 const DEFAULT_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby_8k2ZQB4GcG7qdanf8OuCKHH_tN9i4iXo6DH4KvlQQ9R5uXku0fw3itsvauc15-Yx/exec";
 
@@ -1129,12 +956,8 @@ let audioCtx = null;
 let bgmTimer = null;
 
 function initAudio() {
-  if (!audioCtx) {
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  }
-  if (audioCtx.state === 'suspended') {
-    audioCtx.resume();
-  }
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if (audioCtx.state === 'suspended') audioCtx.resume();
 }
 
 function playTone(freq, duration, type = 'sine', vol = 0.12) {
@@ -1165,9 +988,7 @@ function playSoundEffect(kind) {
     setTimeout(() => playTone(180, 0.28, 'sawtooth', 0.12), 140);
   }
   if (kind === 'win') {
-    [523, 659, 784, 1046].forEach((f, idx) => {
-      setTimeout(() => playTone(f, 0.2, 'triangle', 0.16), idx * 110);
-    });
+    [523, 659, 784, 1046].forEach((f, idx) => setTimeout(() => playTone(f, 0.2, 'triangle', 0.16), idx * 110));
   }
 }
 
@@ -1204,25 +1025,41 @@ function toggleBgm() {
   }
 }
 
-// Helper hiển thị phân số đẹp
 function F(num, den) {
   return `<span class="frac"><span>${num}</span><span>${den}</span></span>`;
 }
 
 // =========================================================================
-// 2. NGÂN HÀNG 40 CÂU HỎI TOÁN 7 (KẾT NỐI TRI THỨC - HẾT BÀI 4)
-//    Chia 5 Vùng đất, mỗi vùng đất 8 câu (từ Dễ đến Khó) + 3 mức Gợi ý
+// 2. NGÂN HÀNG 40 CÂU HỎI TOÁN 7 (GẮN NHÃN DẠNG BÀI CHI TIẾT ĐỂ THỐNG KÊ)
 // =========================================================================
+const ALL_TOPICS_14 = [
+  "So sánh, sắp xếp",
+  "Biểu diễn trên trục số",
+  "Số đối của số hữu tỉ",
+  "Cộng, trừ số hữu tỉ",
+  "Nhân, chia số hữu tỉ",
+  "Tính chất phân phối",
+  "Quy tắc dấu ngoặc",
+  "Lũy thừa với số mũ tự nhiên",
+  "Nhân, chia lũy thừa cùng cơ số",
+  "Lũy thừa của lũy thừa",
+  "Thứ tự phép tính",
+  "Chuyển vế, tìm x",
+  "Tìm x chứa lũy thừa",
+  "Tính tổng quy luật"
+];
+
 const LANDS = [
   {
     id: 0,
     name: "Làng Tập Hợp ℚ",
-    topic: "So sánh số hữu tỉ",
+    topic: "So sánh, sắp xếp & Biểu diễn trên trục số",
     icon: "🏡",
     maxStars: 24,
     questions: [
       {
         type: "mc",
+        topicTag: "So sánh, sắp xếp",
         q: `So sánh hai số hữu tỉ ${F('-3', '5')} và ${F('-2', '5')}.`,
         options: [`${F('-3', '5')} > ${F('-2', '5')}`, `${F('-3', '5')} < ${F('-2', '5')}`, `${F('-3', '5')} = ${F('-2', '5')}`],
         ans: 1,
@@ -1236,6 +1073,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "So sánh, sắp xếp",
         q: `So sánh −${F('2', '3')} và −${F('3', '4')}.`,
         options: [`−${F('2', '3')} = −${F('3', '4')}`, `−${F('2', '3')} < −${F('3', '4')}`, `−${F('2', '3')} > −${F('3', '4')}`],
         ans: 2,
@@ -1249,6 +1087,7 @@ const LANDS = [
       },
       {
         type: "fill",
+        topicTag: "Số đối của số hữu tỉ",
         q: `Số đối của −${F('4', '5')} là:`,
         ansText: ["4/5", "0,8", "0.8"],
         ansDisplay: `${F('4', '5')}`,
@@ -1262,6 +1101,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "So sánh, sắp xếp",
         q: `Sắp xếp các số sau theo thứ tự tăng dần: −1,5; −${F('4', '3')}; 0; ${F('2', '3')}.`,
         options: [
           `−1,5; −${F('4', '3')}; 0; ${F('2', '3')}`,
@@ -1279,7 +1119,8 @@ const LANDS = [
       },
       {
         type: "mc",
-        q: `Có bao nhiêu số nguyên x thỏa mãn −${F('7', '3')} < x < −${F('1', '2')}?`,
+        topicTag: "Biểu diễn trên trục số",
+        q: `Có bao nhiêu số nguyên x nằm giữa −${F('7', '3')} và −${F('1', '2')} trên trục số?`,
         options: ["1 số", "2 số", "3 số"],
         ans: 1,
         hints: [
@@ -1287,11 +1128,12 @@ const LANDS = [
           "Mức 2: −7/3 = −2,33... và −1/2 = −0,5.",
           "Mức 3: Các số nguyên nằm giữa −2,33 và −0,5 là −2 và −1."
         ],
-        steps: `1. Ta có −${F('7', '3')} = −2${F('1', '3')} và −${F('1', '2')} = −0,5.<br>2. Các số nguyên x thỏa mãn là x ∈ {−2; −1}, gồm 2 số.`,
+        steps: `1. Ta có −${F('7', '3')} = −2${F('1', '3')} và −${F('1', '2')} = −0,5.<br>2. Các số nguyên x nằm giữa trên trục số là x ∈ {−2; −1}, gồm 2 số.`,
         mistake: "Lấy cả số −3 (vì −3 < −7/3) hoặc số 0 (vì 0 > −1/2)."
       },
       {
         type: "mc",
+        topicTag: "So sánh, sắp xếp",
         q: `So sánh hai số hữu tỉ A = ${F('-9', '11')} và B = ${F('-11', '13')}.`,
         options: ["A > B", "A < B", "A = B"],
         ans: 0,
@@ -1305,7 +1147,8 @@ const LANDS = [
       },
       {
         type: "mc",
-        q: `Tìm các số nguyên x để ${F('-5', '6')} < ${F('x', '12')} < ${F('-1', '4')}.`,
+        topicTag: "Biểu diễn trên trục số",
+        q: `Tìm các số nguyên x để điểm biểu diễn ${F('x', '12')} nằm giữa ${F('-5', '6')} và ${F('-1', '4')} trên trục số.`,
         options: [
           "x ∈ {−9; −8; −7; −6; −5; −4}",
           "x ∈ {−10; −9; −8; −7; −6; −5; −4}",
@@ -1322,6 +1165,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "So sánh, sắp xếp",
         q: `Cho a, b ∈ ℤ, b > 0 và a < b. So sánh ${F('a', 'b')} và ${F('a + 2026', 'b + 2026')}.`,
         options: [
           `${F('a', 'b')} < ${F('a + 2026', 'b + 2026')}`,
@@ -1348,6 +1192,7 @@ const LANDS = [
     questions: [
       {
         type: "mc",
+        topicTag: "Cộng, trừ số hữu tỉ",
         q: `Tính: ${F('-3', '4')} + ${F('1', '4')}.`,
         options: [`−${F('1', '2')}`, `−${F('1', '4')}`, `${F('1', '2')}`],
         ans: 0,
@@ -1361,6 +1206,7 @@ const LANDS = [
       },
       {
         type: "fill",
+        topicTag: "Cộng, trừ số hữu tỉ",
         q: `Tính: ${F('2', '3')} − (−${F('1', '3')}) =`,
         ansText: ["1"],
         ansDisplay: "1",
@@ -1374,6 +1220,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "Nhân, chia số hữu tỉ",
         q: `Tính tích: (−${F('2', '3')}) · ${F('3', '5')}.`,
         options: [`−${F('2', '5')}`, `${F('2', '5')}`, `−${F('5', '8')}`],
         ans: 0,
@@ -1387,6 +1234,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "Nhân, chia số hữu tỉ",
         q: `Tính thương: ${F('-4', '7')} : ${F('8', '-21')}.`,
         options: [`${F('3', '2')}`, `−${F('3', '2')}`, `−${F('32', '147')}`],
         ans: 0,
@@ -1400,6 +1248,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "Cộng, trừ số hữu tỉ",
         q: `Tính: (−1${F('1', '2')}) + ${F('5', '6')}.`,
         options: [`−${F('2', '3')}`, `${F('2', '3')}`, `−${F('1', '3')}`],
         ans: 0,
@@ -1413,6 +1262,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "Nhân, chia số hữu tỉ",
         q: `Tính: (−${F('3', '4')}) · 1${F('1', '3')} − ${F('5', '6')}.`,
         options: [`−${F('11', '6')}`, `${F('1', '6')}`, `−${F('1', '2')}`],
         ans: 0,
@@ -1426,6 +1276,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "Nhân, chia số hữu tỉ",
         q: `Tính tích: (${F('1', '2')} − 1)(${F('1', '3')} − 1)(${F('1', '4')} − 1)(${F('1', '5')} − 1).`,
         options: [`${F('1', '5')}`, `−${F('1', '5')}`, `${F('1', '120')}`],
         ans: 0,
@@ -1439,6 +1290,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "Tính tổng quy luật",
         q: `Tính tổng: S = ${F('1', '1·2')} + ${F('1', '2·3')} + ${F('1', '3·4')} + ... + ${F('1', '9·10')}.`,
         options: [`${F('9', '10')}`, `1`, `${F('1', '10')}`],
         ans: 0,
@@ -1461,6 +1313,7 @@ const LANDS = [
     questions: [
       {
         type: "mc",
+        topicTag: "Quy tắc dấu ngoặc",
         q: `Khi bỏ dấu ngoặc trong biểu thức −(x − 3 + y), ta được:`,
         options: ["−x − 3 + y", "−x + 3 − y", "−x − 3 − y"],
         ans: 1,
@@ -1474,6 +1327,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "Lũy thừa với số mũ tự nhiên",
         q: `Tính giá trị lũy thừa: (−${F('1', '2')})³.`,
         options: [`−${F('1', '8')}`, `${F('1', '8')}`, `−${F('1', '6')}`],
         ans: 0,
@@ -1487,6 +1341,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "Quy tắc dấu ngoặc",
         q: `Bỏ ngoặc rồi tính hợp lí: ${F('3', '7')} − (${F('3', '7')} − ${F('4', '5')}).`,
         options: [`${F('4', '5')}`, `−${F('4', '5')}`, `${F('6', '7')}`],
         ans: 0,
@@ -1500,6 +1355,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "Nhân, chia lũy thừa cùng cơ số",
         q: `Viết tích (${F('2', '3')})⁴ · (${F('2', '3')})² dưới dạng một lũy thừa:`,
         options: [`(${F('2', '3')})⁶`, `(${F('2', '3')})⁸`, `(${F('4', '9')})⁶`],
         ans: 0,
@@ -1513,6 +1369,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "Quy tắc dấu ngoặc",
         q: `Tính hợp lí: −(${F('5', '11')} + ${F('3', '8')}) + (−${F('6', '11')} + ${F('5', '8')}).`,
         options: [`−${F('3', '4')}`, `−1`, `${F('1', '4')}`],
         ans: 0,
@@ -1526,6 +1383,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "Quy tắc dấu ngoặc",
         q: `Tính: ${F('1', '3')} − [ ${F('4', '3')} − (−${F('2', '3')} + ${F('5', '6')}) ].`,
         options: [`−${F('5', '6')}`, `−${F('1', '2')}`, `${F('1', '6')}`],
         ans: 0,
@@ -1539,6 +1397,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "Quy tắc dấu ngoặc",
         q: `Rút gọn biểu thức: M = −(−x + y − z) − (x − y + z) + (x + y − z).`,
         options: ["x + y − z", "x − y + z", "−x + y + z"],
         ans: 0,
@@ -1552,6 +1411,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "Lũy thừa với số mũ tự nhiên",
         q: `Rút gọn biểu thức lũy thừa: A = ${F('(−2)³ · 3⁴', '6²')}.`,
         options: ["−18", "18", "−9"],
         ans: 0,
@@ -1568,12 +1428,13 @@ const LANDS = [
   {
     id: 3,
     name: "Núi Thứ Tự & Chuyển Vế",
-    topic: "Thứ tự phép tính & Tìm x",
+    topic: "Thứ tự phép tính & Chuyển vế, tìm x",
     icon: "⛰️",
     maxStars: 24,
     questions: [
       {
         type: "fill",
+        topicTag: "Thứ tự phép tính",
         q: `Tính giá trị biểu thức: 15 − 3 · 2 + 1 =`,
         ansText: ["10"],
         ansDisplay: "10",
@@ -1587,6 +1448,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "Chuyển vế, tìm x",
         q: `Tìm x, biết: x + ${F('1', '3')} = ${F('5', '6')}.`,
         options: [`x = ${F('1', '2')}`, `x = ${F('7', '6')}`, `x = ${F('1', '6')}`],
         ans: 0,
@@ -1600,6 +1462,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "Thứ tự phép tính",
         q: `Tính: ${F('1', '2')} + ${F('3', '2')} · ${F('1', '3')}.`,
         options: ["1", `${F('2', '3')}`, `${F('5', '6')}`],
         ans: 0,
@@ -1613,6 +1476,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "Chuyển vế, tìm x",
         q: `Tìm x, biết: x − ${F('3', '4')} = −${F('1', '2')}.`,
         options: [`x = ${F('1', '4')}`, `x = −${F('5', '4')}`, `x = −${F('1', '4')}`],
         ans: 0,
@@ -1626,6 +1490,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "Thứ tự phép tính",
         q: `Tính: (−${F('1', '2')})³ + ${F('3', '4')} : ${F('1', '2')}.`,
         options: [`${F('11', '8')}`, `−${F('13', '8')}`, `${F('13', '8')}`],
         ans: 0,
@@ -1639,6 +1504,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "Chuyển vế, tìm x",
         q: `Tìm x, biết: −${F('3', '4')}x = ${F('9', '8')}.`,
         options: [`x = −${F('3', '2')}`, `x = ${F('3', '2')}`, `x = −${F('27', '32')}`],
         ans: 0,
@@ -1652,6 +1518,7 @@ const LANDS = [
       },
       {
         type: "fill",
+        topicTag: "Chuyển vế, tìm x",
         q: `Tìm x, biết: ${F('3', '4')} + ${F('1', '4')}x = −${F('1', '2')}. Nhập giá trị của x:`,
         ansText: ["-5"],
         ansDisplay: "x = −5",
@@ -1665,6 +1532,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "Chuyển vế, tìm x",
         q: `Tìm x, biết: ${F('3', '4')} − (x + ${F('1', '2')}) = −${F('5', '8')}.`,
         options: [`x = ${F('7', '8')}`, `x = −${F('7', '8')}`, `x = ${F('15', '8')}`],
         ans: 0,
@@ -1687,6 +1555,7 @@ const LANDS = [
     questions: [
       {
         type: "mc",
+        topicTag: "Thứ tự phép tính",
         q: `Kết quả của phép tính (${F('3', '4')} − ${F('1', '2')})² : ${F('1', '8')} + ${F('3', '2')} là:`,
         options: ["2", `${F('7', '2')}`, `${F('5', '2')}`],
         ans: 0,
@@ -1700,6 +1569,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "Tìm x chứa lũy thừa",
         q: `Tìm x, biết: (x − ${F('1', '2')})² = ${F('1', '4')}.`,
         options: ["x = 1 hoặc x = 0", "x = 1", `x = ${F('3', '4')} hoặc x = ${F('1', '4')}`],
         ans: 0,
@@ -1713,6 +1583,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "Thứ tự phép tính",
         q: `Tính giá trị biểu thức: [ (−${F('1', '3')})² + ${F('5', '9')} ] : (−1${F('1', '3')}) − (−${F('1', '2')})³.`,
         options: [`−${F('3', '8')}`, `−${F('5', '8')}`, `${F('3', '8')}`],
         ans: 0,
@@ -1726,6 +1597,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "Chuyển vế, tìm x",
         q: `Tìm x, biết: −(x − ${F('1', '2')}) + ${F('3', '4')} = −${F('3', '4')}.`,
         options: ["x = 2", "x = −2", `x = ${F('1', '2')}`],
         ans: 0,
@@ -1739,6 +1611,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "Tính chất phân phối",
         q: `Tính nhanh: ${F('4', '9')} · (−${F('5', '7')}) + ${F('4', '9')} · (−${F('2', '7')}) + 1${F('4', '9')}.`,
         options: ["1", `${F('13', '9')}`, `−${F('4', '9')}`],
         ans: 0,
@@ -1752,6 +1625,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "So sánh, sắp xếp",
         q: `Tìm số nguyên x thỏa mãn: ${F('2', '3')} − ${F('5', '6')} ≤ x ≤ ${F('1', '2')} + ${F('3', '4')}.`,
         options: ["x ∈ {0; 1}", "x ∈ {−1; 0; 1}", "x ∈ {0; 1; 2}"],
         ans: 0,
@@ -1765,6 +1639,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "Lũy thừa của lũy thừa",
         q: `So sánh hai lũy thừa: 2³⁰ và 3²⁰.`,
         options: ["2³⁰ < 3²⁰", "2³⁰ > 3²⁰", "2³⁰ = 3²⁰"],
         ans: 0,
@@ -1778,6 +1653,7 @@ const LANDS = [
       },
       {
         type: "mc",
+        topicTag: "Tính tổng quy luật",
         q: `Tính giá trị biểu thức: B = (1 − ${F('1', '2')})(1 − ${F('1', '3')})(1 − ${F('1', '4')})...(1 − ${F('1', '2026')}).`,
         options: [`${F('1', '2026')}`, `${F('2025', '2026')}`, `${F('1', '2025')}`],
         ans: 0,
@@ -1803,24 +1679,60 @@ const BADGES_DATA = [
 ];
 
 // =========================================================================
-// 3. QUẢN LÝ TRẠNG THÁI NGƯỜI CHƠI (LƯU TỰ ĐỘNG VÀO LOCALSTORAGE ĐỂ CHƠI TIẾP)
+// 3. QUẢN LÝ TRẠNG THÁI NGƯỜI CHƠI & LỊCH SỬ THỐNG KÊ THEO DẠNG BÀI
 // =========================================================================
 let player = JSON.parse(localStorage.getItem('vqht_player_save')) || null;
 
+function ensurePlayerTopicStats(p) {
+  if (!p.topicStats) p.topicStats = {};
+  ALL_TOPICS_14.forEach(t => {
+    if (!p.topicStats[t]) p.topicStats[t] = { done: 0, wrong: 0 };
+  });
+}
+
 function savePlayer() {
   if (player) {
+    ensurePlayerTopicStats(player);
     localStorage.setItem('vqht_player_save', JSON.stringify(player));
+    upsertLocalStudentRecord(player);
   }
+}
+
+// Lưu danh sách học sinh đã chơi trên máy / đã đồng bộ để Giáo viên xem ngay cả khi chưa tải mạng
+function getSavedStudentsList() {
+  return JSON.parse(localStorage.getItem('vqht_all_students')) || [];
+}
+
+function upsertLocalStudentRecord(p) {
+  const list = getSavedStudentsList();
+  const totalStars = p.landStars.reduce((a, b) => a + b, 0);
+  const totalDone = Object.values(p.topicStats || {}).reduce((s, x) => s + x.done, 0) || p.totalCorrect;
+  const record = {
+    tenHocSinh: p.name,
+    lop: (p.studentClass || "7A").toUpperCase().trim(),
+    capDo: p.level,
+    sao: totalStars,
+    cauDung: p.totalCorrect,
+    tongCauDaLam: Math.max(totalDone, p.totalCorrect),
+    vungDatMo: p.unlockedLand + (p.landStars[4] >= 15 ? 1 : 0),
+    topicStats: p.topicStats || {}
+  };
+  const idx = list.findIndex(x => x.tenHocSinh.toLowerCase() === record.tenHocSinh.toLowerCase() && x.lop === record.lop);
+  if (idx >= 0) list[idx] = record;
+  else list.push(record);
+  localStorage.setItem('vqht_all_students', JSON.stringify(list));
 }
 
 function initApp() {
   document.getElementById('disp-teacher').textContent = teacherConfig.teacherName;
   document.getElementById('disp-school').textContent = teacherConfig.schoolName;
+  document.getElementById('td-subtitle').textContent = `Giáo viên: ${teacherConfig.teacherName} • ${teacherConfig.schoolName}`;
   document.getElementById('cfg-teacher').value = teacherConfig.teacherName;
   document.getElementById('cfg-school').value = teacherConfig.schoolName;
   document.getElementById('cfg-script').value = teacherConfig.scriptUrl;
 
   if (player) {
+    ensurePlayerTopicStats(player);
     document.getElementById('btn-continue').style.display = 'inline-flex';
     document.getElementById('cont-name').textContent = player.name;
   }
@@ -1839,7 +1751,7 @@ function selectAvatar(el) {
 
 function createNewCharacter() {
   const name = document.getElementById('inp-student-name').value.trim();
-  const cls = document.getElementById('inp-student-class').value.trim() || "7A";
+  const cls = document.getElementById('inp-student-class').value.trim().toUpperCase() || "7A4";
   if (!name) {
     alert("Em hãy nhập Họ và tên của mình trước nhé!");
     return;
@@ -1857,8 +1769,9 @@ function createNewCharacter() {
     totalCorrect: 0,
     items: { hints: 2, fifty: 1, skip: 0, heal: 1 },
     badges: ["b1"],
-    submitted: false
+    topicStats: {}
   };
+  ensurePlayerTopicStats(player);
   savePlayer();
   closeModals();
   enterHub();
@@ -1871,6 +1784,7 @@ function continueGame() {
 
 function goHome() {
   playSoundEffect('click');
+  document.getElementById('app').classList.remove('wide-mode');
   initApp();
   showScreen('screen-home');
 }
@@ -1884,9 +1798,9 @@ function closeModals() {
   document.querySelectorAll('.modal-backdrop').forEach(m => m.classList.remove('open'));
 }
 
-function openTeacherModal() {
+function openTeacherSettingsModal() {
   playSoundEffect('click');
-  document.getElementById('modal-teacher').classList.add('open');
+  document.getElementById('modal-teacher-settings').classList.add('open');
 }
 
 function saveTeacherConfig() {
@@ -1916,7 +1830,6 @@ function updateHud() {
     document.getElementById(prefix + 'hud-coins').textContent = player.coins;
   });
 
-  // Update profile tab
   document.getElementById('prof-name').textContent = player.name;
   document.getElementById('prof-class').textContent = player.studentClass;
   const totalStars = player.landStars.reduce((a, b) => a + b, 0);
@@ -1925,6 +1838,7 @@ function updateHud() {
 }
 
 function enterHub() {
+  document.getElementById('app').classList.remove('wide-mode');
   updateHud();
   renderMap();
   renderBadges();
@@ -2013,7 +1927,7 @@ function renderBadges() {
 }
 
 // =========================================================================
-// 5. LOGIC CHƠI TỪNG ẢI, GỢI Ý 3 CẤP ĐỘ & CHẤM ĐIỂM TỪNG BƯỚC
+// 5. LOGIC CHƠI TỪNG ẢI & CHẤM ĐIỂM TỪNG BƯỚC
 // =========================================================================
 let stageState = {
   landIdx: 0,
@@ -2025,7 +1939,7 @@ let stageState = {
   fillText: '',
   hintLevel: 0,
   answered: false,
-  results: [] // 'done' | 'wrong'
+  results: []
 };
 
 function startStage(diff) {
@@ -2069,7 +1983,6 @@ function renderQuestion() {
   stageState.hintLevel = 0;
   stageState.answered = false;
 
-  // Hearts & Progress
   document.getElementById('hearts-display').textContent = '❤️'.repeat(stageState.hearts) + '🖤'.repeat(5 - stageState.hearts);
   const segEl = document.getElementById('progress-segments');
   segEl.innerHTML = '';
@@ -2080,7 +1993,6 @@ function renderQuestion() {
     segEl.innerHTML += `<div class="${cls}"></div>`;
   });
 
-  // Question Content
   document.getElementById('q-text').innerHTML = `Câu ${stageState.qIndex + 1}: ${q.q}`;
   document.getElementById('hint-box').classList.remove('show');
   document.getElementById('hint-box').innerHTML = '';
@@ -2090,7 +2002,6 @@ function renderQuestion() {
   checkBtn.style.display = 'inline-flex';
   checkBtn.disabled = true;
 
-  // Powerups UI
   document.getElementById('hint-level-txt').textContent = '0/3';
   document.getElementById('pu-hint-count').textContent = `${player.items.hints} miễn phí`;
   document.getElementById('pu-fifty-count').textContent = player.items.fifty;
@@ -2137,11 +2048,8 @@ function selectOption(idx, btnEl) {
 function pressKey(k) {
   if (stageState.answered) return;
   playSoundEffect('click');
-  if (k === 'BACK') {
-    stageState.fillText = stageState.fillText.slice(0, -1);
-  } else if (stageState.fillText.length < 10) {
-    stageState.fillText += k;
-  }
+  if (k === 'BACK') stageState.fillText = stageState.fillText.slice(0, -1);
+  else if (stageState.fillText.length < 10) stageState.fillText += k;
   updateFillDisplay();
 }
 
@@ -2151,21 +2059,17 @@ function updateFillDisplay() {
   let previewHtml = txt;
   if (txt.includes('/')) {
     const parts = txt.split('/');
-    if (parts.length === 2 && parts[0] !== '' && parts[1] !== '') {
-      previewHtml = F(parts[0], parts[1]);
-    }
+    if (parts.length === 2 && parts[0] !== '' && parts[1] !== '') previewHtml = F(parts[0], parts[1]);
   }
   document.getElementById('fill-preview-box').innerHTML = `Em viết: ${previewHtml || '...'}`;
   document.getElementById('btn-check-answer').disabled = (txt.trim().length === 0);
 }
 
-// Gợi ý 3 cấp độ
 function useHint() {
   if (stageState.answered) return;
   const q = LANDS[stageState.landIdx].questions[stageState.qIndex];
   if (stageState.hintLevel >= 3) return;
 
-  // Mức 1 miễn phí hoặc dùng cuộn gợi ý; mức 2 & 3 trừ cuộn gợi ý nếu có
   if (stageState.hintLevel > 0 && player.items.hints > 0) {
     player.items.hints -= 1;
     savePlayer();
@@ -2179,9 +2083,7 @@ function useHint() {
 
   stageState.hintLevel += 1;
   document.getElementById('hint-level-txt').textContent = `${stageState.hintLevel}/3`;
-  if (stageState.hintLevel >= 3) {
-    document.getElementById('pu-hint').disabled = true;
-  }
+  if (stageState.hintLevel >= 3) document.getElementById('pu-hint').disabled = true;
 }
 
 function useFiftyFifty() {
@@ -2220,12 +2122,9 @@ function useHeal() {
   savePlayer();
   document.getElementById('pu-heal-count').textContent = player.items.heal;
   document.getElementById('hearts-display').textContent = '❤️'.repeat(stageState.hearts) + '🖤'.repeat(5 - stageState.hearts);
-  if (stageState.hearts >= 5 || player.items.heal <= 0) {
-    document.getElementById('pu-heal').disabled = true;
-  }
+  if (stageState.hearts >= 5 || player.items.heal <= 0) document.getElementById('pu-heal').disabled = true;
 }
 
-// Bấm KIỂM TRA mới chấm điểm và hiện lời giải từng bước
 function checkAnswer() {
   if (stageState.answered) return;
   stageState.answered = true;
@@ -2249,6 +2148,10 @@ function checkAnswer() {
     correctDisplayHtml = q.ansDisplay;
   }
 
+  ensurePlayerTopicStats(player);
+  const tag = q.topicTag || "So sánh, sắp xếp";
+  player.topicStats[tag].done += 1;
+
   document.getElementById('btn-check-answer').style.display = 'none';
   const resPanel = document.getElementById('result-panel');
   resPanel.classList.add('show');
@@ -2270,6 +2173,7 @@ function checkAnswer() {
   } else {
     playSoundEffect('wrong');
     stageState.results[stageState.qIndex] = 'wrong';
+    player.topicStats[tag].wrong += 1;
     stageState.hearts = Math.max(0, stageState.hearts - 1);
     document.getElementById('hearts-display').textContent = '❤️'.repeat(stageState.hearts) + '🖤'.repeat(5 - stageState.hearts);
 
@@ -2313,27 +2217,19 @@ function finishStage() {
   const landIdx = stageState.landIdx;
   const correctCount = stageState.results.filter(r => r === 'done').length;
 
-  // Tính sao đạt được dựa trên mức độ & số câu đúng
   const starBonus = stageState.diff === 'hard' ? 3 : (stageState.diff === 'medium' ? 2 : 1);
   const earnedStars = Math.min(24, correctCount * starBonus);
   if (earnedStars > player.landStars[landIdx]) {
     player.landStars[landIdx] = earnedStars;
   }
 
-  // Mở khóa vùng đất tiếp theo & trao huy hiệu
   const badgeIds = ["b2", "b3", "b4", "b5", "b6"];
   if (correctCount >= 5) {
-    if (!player.badges.includes(badgeIds[landIdx])) {
-      player.badges.push(badgeIds[landIdx]);
-    }
-    if (landIdx === player.unlockedLand && player.unlockedLand < LANDS.length - 1) {
-      player.unlockedLand += 1;
-    }
+    if (!player.badges.includes(badgeIds[landIdx])) player.badges.push(badgeIds[landIdx]);
+    if (landIdx === player.unlockedLand && player.unlockedLand < LANDS.length - 1) player.unlockedLand += 1;
   }
 
   savePlayer();
-
-  // Tự động gửi tiến độ về Google Sheets của giáo viên
   submitResultsToSheet(true);
 
   alert(`🎉 Chúc mừng ${player.name} đã hoàn thành ${LANDS[landIdx].name}!
@@ -2344,7 +2240,7 @@ function finishStage() {
 }
 
 // =========================================================================
-// 6. GỬI KẾT QUẢ VỀ GOOGLE SHEETS QUA APPS SCRIPT (/EXEC)
+// 6. GỬI & TẢI KẾT QUẢ QUA GOOGLE APPS SCRIPT (/EXEC) + TRANG GIÁO VIÊN
 // =========================================================================
 function submitResultsToSheet(isSilent = false) {
   if (!player) return;
@@ -2357,11 +2253,33 @@ function submitResultsToSheet(isSilent = false) {
     statusEl.textContent = '⏳ Đang gửi kết quả lên hệ thống của Thầy/Cô...';
   }
 
+  const totalDone = Object.values(player.topicStats || {}).reduce((s, x) => s + x.done, 0) || player.totalCorrect;
+  // Tìm dạng yếu nhất của học sinh
+  let weakestTopic = "Chưa có lỗi sai";
+  let maxWrongRate = 0;
+  Object.entries(player.topicStats || {}).forEach(([topic, st]) => {
+    if (st.done > 0 && st.wrong > 0) {
+      const rate = Math.round((st.wrong / st.done) * 100);
+      if (rate >= maxWrongRate) {
+        maxWrongRate = rate;
+        weakestTopic = `${topic} (${rate}% sai)`;
+      }
+    }
+  });
+
   const payload = {
     tenHocSinh: player.name,
     lop: player.studentClass,
     diemSo: `${totalStars}/120 sao (${player.totalCorrect} câu đúng)`,
-    chiTiet: `Cấp ${player.level} | XP: ${player.xp} | Vàng: ${player.coins} | Huy hiệu: ${player.badges.length}/6 | Sao từng vùng: [${player.landStars.join(', ')}]`
+    chiTiet: JSON.stringify({
+      capDo: player.level,
+      sao: totalStars,
+      cauDung: player.totalCorrect,
+      tongCauDaLam: totalDone,
+      vungDatMo: player.unlockedLand + (player.landStars[4] >= 15 ? 1 : 0),
+      dangYeuNhat: weakestTopic,
+      topicStats: player.topicStats
+    })
   };
 
   fetch(url, {
@@ -2383,6 +2301,318 @@ function submitResultsToSheet(isSilent = false) {
       statusEl.textContent = '⚠️ Lỗi kết nối mạng, em hãy thử bấm nộp lại nhé!';
     }
   });
+}
+
+// Dữ liệu học sinh trong Trang Giáo Viên (tải từ Google Sheets + gộp dữ liệu chơi thực tế)
+let teacherRecords = [];
+
+function openTeacherDashboard() {
+  playSoundEffect('click');
+  document.getElementById('app').classList.add('wide-mode');
+  showScreen('screen-teacher');
+
+  // Nạp ngay dữ liệu hiện có trên máy trước để giáo viên thấy tức thì
+  teacherRecords = getSavedStudentsList();
+  populateClassFilter();
+  renderTeacherDashboard();
+
+  // Tự động gọi tải dữ liệu mới nhất từ Google Sheets
+  fetchTeacherResults();
+}
+
+function exitTeacherDashboard() {
+  playSoundEffect('click');
+  document.getElementById('app').classList.remove('wide-mode');
+  showScreen('screen-home');
+}
+
+function switchTdTab(tabKey, btnEl) {
+  playSoundEffect('click');
+  document.querySelectorAll('.td-tab-btn').forEach(b => b.classList.remove('active'));
+  btnEl.classList.add('active');
+
+  ['support', 'ranking', 'weakness', 'chart'].forEach(k => {
+    document.getElementById('td-view-' + k).style.display = (k === tabKey) ? 'block' : 'none';
+  });
+}
+
+function fetchTeacherResults() {
+  const url = teacherConfig.scriptUrl || DEFAULT_SCRIPT_URL;
+  const msgEl = document.getElementById('td-sync-msg');
+  const btnEl = document.getElementById('btn-fetch-results');
+
+  msgEl.textContent = "⏳ Đang tải kết quả mới nhất từ Google Sheets...";
+  btnEl.disabled = true;
+
+  fetch(url + "?action=getResults")
+    .then(res => res.json())
+    .then(data => {
+      btnEl.disabled = false;
+      const rows = Array.isArray(data) ? data : (data.data || data.records || []);
+      if (rows.length > 0) {
+        const parsed = parseSheetRows(rows);
+        if (parsed.length > 0) {
+          teacherRecords = parsed;
+          localStorage.setItem('vqht_all_students', JSON.stringify(teacherRecords));
+        }
+      }
+      const now = new Date();
+      document.getElementById('td-last-update').textContent = `Cập nhật lúc ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}`;
+      msgEl.textContent = `✅ Đã tải xong ${teacherRecords.length} hồ sơ học sinh. Chọn lớp ở góc trên để lọc kết quả.`;
+      populateClassFilter();
+      renderTeacherDashboard();
+    })
+    .catch(() => {
+      btnEl.disabled = false;
+      teacherRecords = getSavedStudentsList();
+      msgEl.textContent = `📋 Đang hiển thị ${teacherRecords.length} hồ sơ học sinh đã lưu (Kiểm tra quyền truy cập "Bất kỳ ai" của Apps Script nếu muốn đồng bộ trực tuyến).`;
+      populateClassFilter();
+      renderTeacherDashboard();
+    });
+}
+
+function parseSheetRows(rows) {
+  const mapByStudent = {};
+  rows.forEach(r => {
+    const name = (r.tenHocSinh || r["Tên học sinh"] || r["Họ và tên"] || "").toString().trim();
+    if (!name) return;
+    const cls = (r.lop || r["Lớp"] || "7A").toString().trim().toUpperCase();
+    const diemStr = (r.diemSo || r["Điểm số"] || "").toString();
+    const chiTietStr = (r.chiTiet || r["Chi tiết"] || "").toString();
+
+    let stars = 0, level = 1, correct = 0, totalDone = 0, vungDatMo = 1, topicStats = {};
+    const starMatch = diemStr.match(/(\d+)\s*\/\s*120/);
+    if (starMatch) stars = parseInt(starMatch[1], 10);
+    const corrMatch = diemStr.match(/\((\d+)\s*câu/);
+    if (corrMatch) correct = parseInt(corrMatch[1], 10);
+
+    try {
+      if (chiTietStr.startsWith("{")) {
+        const obj = JSON.parse(chiTietStr);
+        level = obj.capDo || Math.floor((correct * 10) / 100) + 1;
+        stars = obj.sao ?? stars;
+        correct = obj.cauDung ?? correct;
+        totalDone = obj.tongCauDaLam || correct;
+        vungDatMo = obj.vungDatMo || 1;
+        topicStats = obj.topicStats || {};
+      } else {
+        const lvlM = chiTietStr.match(/Cấp\s*(\d+)/i);
+        if (lvlM) level = parseInt(lvlM[1], 10);
+      }
+    } catch (e) {}
+
+    const key = `${name.toLowerCase()}__${cls}`;
+    // Luôn giữ bản ghi mới nhất / cao nhất của học sinh
+    if (!mapByStudent[key] || stars >= mapByStudent[key].sao) {
+      mapByStudent[key] = {
+        tenHocSinh: name,
+        lop: cls,
+        capDo: level,
+        sao: stars,
+        cauDung: correct,
+        tongCauDaLam: Math.max(totalDone, correct),
+        vungDatMo: vungDatMo,
+        topicStats: topicStats
+      };
+    }
+  });
+  return Object.values(mapByStudent);
+}
+
+function populateClassFilter() {
+  const select = document.getElementById('td-class-filter');
+  const currentVal = select.value;
+  const classes = [...new Set(teacherRecords.map(r => r.lop).filter(Boolean))].sort();
+
+  select.innerHTML = `<option value="ALL">Lớp: Tất cả (${classes.length} lớp)</option>`;
+  classes.forEach(c => {
+    select.innerHTML += `<option value="${c}">Lớp: ${c}</option>`;
+  });
+
+  if (classes.includes(currentVal)) select.value = currentVal;
+  else select.value = "ALL";
+}
+
+function renderTeacherDashboard() {
+  const selectedClass = document.getElementById('td-class-filter').value;
+  const filtered = selectedClass === "ALL"
+    ? teacherRecords
+    : teacherRecords.filter(r => r.lop === selectedClass);
+
+  document.getElementById('td-badge-class').textContent = selectedClass === "ALL" ? "Lớp: Tất cả" : `Lớp: ${selectedClass}`;
+  document.getElementById('td-chart-class-lbl').textContent = selectedClass === "ALL" ? "Tất cả lớp" : `Lớp ${selectedClass}`;
+
+  // 1. KPI Summary Cards
+  const totalStudents = filtered.length;
+  const totalQuestionsDone = filtered.reduce((sum, s) => sum + (s.tongCauDaLam || s.cauDung || 0), 0);
+  const completedAll5 = filtered.filter(s => (s.vungDatMo || 1) >= 5 || s.sao >= 80).length;
+
+  document.getElementById('td-kpi-grid').innerHTML = `
+    <div class="kpi-card">
+      <div class="kpi-big">${totalStudents} <small>em</small></div>
+      <div class="kpi-sub">${selectedClass === "ALL" ? "đã tham gia làm bài ở nhà" : `học sinh lớp ${selectedClass} đã chơi`}</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-big">${totalQuestionsDone.toLocaleString('vi-VN')}</div>
+      <div class="kpi-sub">câu hỏi các em đã tự làm</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-big">${completedAll5} <small>em</small></div>
+      <div class="kpi-sub">đã đi hết cả 5/5 vùng đất</div>
+    </div>
+  `;
+
+  // 2. Class breakdown cards (hiển thị từng lớp như 7A4, 7A7 ở ảnh 2)
+  const allClasses = [...new Set(teacherRecords.map(r => r.lop).filter(Boolean))].sort();
+  const classGrid = document.getElementById('td-class-breakdown');
+  classGrid.innerHTML = '';
+  allClasses.forEach(cls => {
+    const stuInCls = teacherRecords.filter(r => r.lop === cls);
+    const qInCls = stuInCls.reduce((sum, s) => sum + (s.tongCauDaLam || s.cauDung || 0), 0);
+    const pctWidth = Math.min(100, Math.round((stuInCls.length / 40) * 100));
+    const isSelected = (selectedClass === cls);
+    classGrid.innerHTML += `
+      <div class="class-stat-card" style="${isSelected ? 'border-color:#0f5c52; background:#f0fdfa;' : ''}; cursor:pointer;" onclick="quickFilterClass('${cls}')">
+        <div class="class-badge">${cls}</div>
+        <div class="class-bar-wrap">
+          <div style="font-size:14px; font-weight:800;"><b>${stuInCls.length} em</b> đã chơi • <b>${qInCls.toLocaleString('vi-VN')}</b> câu</div>
+          <div class="class-bar-bg"><div class="class-bar-fill" style="width:${Math.max(12, pctWidth)}%"></div></div>
+        </div>
+      </div>
+    `;
+  });
+
+  // 3. Mục 3 (Ảnh 1): Dạng cả lớp sai nhiều nhất + Tên học sinh cần hỗ trợ
+  const topicAgg = {};
+  ALL_TOPICS_14.forEach(t => {
+    topicAgg[t] = { done: 0, wrong: 0, needHelpStudents: [] };
+  });
+
+  filtered.forEach(stu => {
+    const stats = stu.topicStats || {};
+    Object.entries(stats).forEach(([tName, st]) => {
+      if (!topicAgg[tName]) topicAgg[tName] = { done: 0, wrong: 0, needHelpStudents: [] };
+      topicAgg[tName].done += (st.done || 0);
+      topicAgg[tName].wrong += (st.wrong || 0);
+      if ((st.wrong || 0) >= 1) {
+        topicAgg[tName].needHelpStudents.push({
+          name: stu.tenHocSinh,
+          wrong: st.wrong,
+          done: st.done
+        });
+      }
+    });
+  });
+
+  // Sắp xếp các dạng bài theo tỉ lệ sai / số học sinh cần hỗ trợ giảm dần
+  const sortedTopics = Object.entries(topicAgg)
+    .map(([name, info]) => {
+      const rate = info.done > 0 ? Math.round((info.wrong / info.done) * 100) : 0;
+      return { name, ...info, rate };
+    })
+    .filter(item => item.wrong > 0 || item.needHelpStudents.length > 0)
+    .sort((a, b) => b.rate - a.rate || b.needHelpStudents.length - a.needHelpStudents.length);
+
+  const supportTbody = document.getElementById('td-support-tbody');
+  supportTbody.innerHTML = '';
+  if (sortedTopics.length === 0) {
+    supportTbody.innerHTML = `<tr><td colspan="2" style="text-align:center; color:#64748b; padding:20px;">Chưa ghi nhận lỗi sai nào ở lớp đang chọn (hoặc chưa có học sinh nộp bài).</td></tr>`;
+  } else {
+    sortedTopics.forEach(t => {
+      const pillsHtml = t.needHelpStudents
+        .sort((a, b) => b.wrong - a.wrong)
+        .map(s => `<span class="pill-student" title="Sai ${s.wrong}/${s.done} câu">${s.name}</span>`)
+        .join('');
+      supportTbody.innerHTML += `
+        <tr>
+          <td>
+            <div style="font-weight:900; color:#0f172a;">${t.name}</div>
+            <div style="font-size:12px; color:#c24136; font-weight:800;">Sai ${t.rate}% (${t.wrong}/${t.done} lượt)</div>
+          </td>
+          <td>${pillsHtml}</td>
+        </tr>
+      `;
+    });
+  }
+
+  // 4. Mục 1: Bảng xếp hạng
+  const ranked = [...filtered].sort((a, b) => b.sao - a.sao || b.cauDung - a.cauDung);
+  document.getElementById('td-rank-count').textContent = `${ranked.length} học sinh`;
+  const rankTbody = document.getElementById('td-ranking-tbody');
+  rankTbody.innerHTML = '';
+  if (ranked.length === 0) {
+    rankTbody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:#64748b; padding:20px;">Chưa có dữ liệu học sinh cho lớp này.</td></tr>`;
+  } else {
+    ranked.forEach((s, idx) => {
+      const medal = idx === 0 ? '🥇' : (idx === 1 ? '🥈' : (idx === 2 ? '🥉' : `#${idx + 1}`));
+      rankTbody.innerHTML += `
+        <tr>
+          <td style="font-weight:900;">${medal}</td>
+          <td style="font-weight:900; color:#0f172a;">${s.tenHocSinh}</td>
+          <td><span class="pill-good">${s.lop}</span></td>
+          <td>Cấp ${s.capDo}</td>
+          <td style="color:#d97706; font-weight:900;">⭐ ${s.sao}/120</td>
+          <td>${s.cauDung} câu</td>
+        </tr>
+      `;
+    });
+  }
+
+  // 5. Mục 2: Dạng yếu nhất của từng người
+  const weakTbody = document.getElementById('td-weakness-tbody');
+  weakTbody.innerHTML = '';
+  if (ranked.length === 0) {
+    weakTbody.innerHTML = `<tr><td colspan="4" style="text-align:center; color:#64748b; padding:20px;">Chưa có dữ liệu học sinh.</td></tr>`;
+  } else {
+    ranked.forEach(s => {
+      let weakTopic = "Hoàn thành tốt các dạng";
+      let weakRate = 0;
+      Object.entries(s.topicStats || {}).forEach(([tName, st]) => {
+        if (st.done > 0 && st.wrong > 0) {
+          const r = Math.round((st.wrong / st.done) * 100);
+          if (r >= weakRate) {
+            weakRate = r;
+            weakTopic = tName;
+          }
+        }
+      });
+      weakTbody.innerHTML += `
+        <tr>
+          <td style="font-weight:900;">${s.tenHocSinh}</td>
+          <td>${s.lop}</td>
+          <td>${weakRate > 0 ? `<span class="pill-weak">${weakTopic}</span>` : `<span class="pill-good">${weakTopic}</span>`}</td>
+          <td style="font-weight:800; color:${weakRate > 0 ? '#b91c1c' : '#15803d'};">${weakRate > 0 ? `${weakRate}% làm sai` : '0% sai'}</td>
+        </tr>
+      `;
+    });
+  }
+
+  // 6. Biểu đồ tỉ lệ làm sai theo dạng bài (như ảnh 2)
+  const chartContainer = document.getElementById('td-chart-container');
+  chartContainer.innerHTML = '';
+  const chartTopics = sortedTopics.length > 0
+    ? sortedTopics
+    : ALL_TOPICS_14.slice(0, 5).map(name => ({ name, rate: 0 }));
+
+  chartTopics.forEach(item => {
+    chartContainer.innerHTML += `
+      <div class="chart-row">
+        <div class="chart-label">${item.name}</div>
+        <div class="chart-track">
+          <div class="chart-bar-bg">
+            <div class="chart-bar-val" style="width:${item.rate}%;"></div>
+          </div>
+          <div class="chart-pct">${item.rate}%</div>
+        </div>
+      </div>
+    `;
+  });
+}
+
+function quickFilterClass(cls) {
+  const select = document.getElementById('td-class-filter');
+  select.value = (select.value === cls) ? "ALL" : cls;
+  renderTeacherDashboard();
 }
 
 // Khởi chạy ứng dụng
